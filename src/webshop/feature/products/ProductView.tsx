@@ -7,13 +7,28 @@ export const ProductView = () => {
     skip: !productSlug,
   })
 
-  const { brand, category, name } = data?.product ?? {}
+  if (!data?.product) return null
+
+  const { brand, category, name, image, sizes, price } = data.product
 
   return (
-    <div>
-      <h1>{name}</h1>
-      <div>{brand}</div>
-      <div>{category}</div>
+    <div className="container grid grid-cols-2 gap-20">
+      <div>
+        <img className="w-full" alt={name} src={image} />
+      </div>
+      <div>
+        <div>{brand}</div>
+        <h1 className="text-3xl">{name} - {category}</h1>
+        <div>{price}</div>
+
+        <select>
+          {sizes?.map((size) => (
+            <option key={size.value} value={size.value}>
+              {size.label}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   )
 }
