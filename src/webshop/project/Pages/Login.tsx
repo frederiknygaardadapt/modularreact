@@ -1,6 +1,5 @@
 import { LoginForm } from 'webshop/feature/auth'
-import { Container } from 'ui/containers/Container/Container'
-import { Heading } from 'ui/components/Heading/Heading'
+import { Container, Heading } from 'ui'
 
 export const Login = () => {
   return (

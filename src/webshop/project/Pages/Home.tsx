@@ -1,5 +1,4 @@
-import { Container } from 'ui/containers/Container/Container'
-import { Heading } from 'ui/components/Heading/Heading'
+import { Container, Heading } from 'ui'
 
 export const Home = () => {
   return (
