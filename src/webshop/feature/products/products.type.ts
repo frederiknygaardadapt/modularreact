@@ -7,4 +7,10 @@ export type Product = {
   description: string
   image: string
   category: string
+  sizes: size[]
+}
+
+type size = {
+    value: number
+    label: string
 }

@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 const createProduct = (index) => {
   const productName = faker.commerce.productName()
   const brands = ['Adidas', 'Nike', 'Puma', 'Reebok', 'Vans']
+  const categories = ['Sko', 'Skjorter', 'Bukser', 'Tilbehør']
 
   return {
     id: faker.datatype.uuid(),
@@ -31,7 +32,21 @@ const createProduct = (index) => {
     price: faker.commerce.price(),
     description: faker.commerce.productAdjective(),
     image: `${faker.image.fashion()}?${index}`,
-    category: faker.commerce.productMaterial(),
+    category: faker.random.arrayElement(categories),
+    sizes: [
+        {
+            value: 0,
+            label: 'Small'
+        },
+        {
+            value: 1,
+            label: 'Medium'
+        },
+        {
+            value: 2,
+            label: 'Large'
+        }
+    ]
   }
 }
 
