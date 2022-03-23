@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const { faker } = require('@faker-js/faker')
 
 const user = require('./users')
+const auth = require('./auth')
 
 const app = express()
 
@@ -50,24 +51,28 @@ const createProduct = (index) => {
 }
 
 const products = [...new Array(30)].map((_, index) => {
-    faker.seed(index)
-    return createProduct(index)
+  faker.seed(index)
+  return createProduct(index)
 })
 
 /** Products */
 app.get('/api/products', (req, res) => {
-  res.send({products})
+  res.send({ products })
 })
 
 app.get('/api/products/:slug', (req, res) => {
-    const product = products.find(product => product.slug.toLowerCase() === req.params.slug.toLowerCase())
-    console.log(product)
-    res.send({product})
+  const product = products.find(
+    (product) => product.slug.toLowerCase() === req.params.slug.toLowerCase()
+  )
+  console.log(product)
+  res.send({ product })
 })
 
 /** User */
 app.get('/users', user.getUsers)
 app.post('/users', user.addUser)
+
+app.post('/api/login', auth.login)
 
 app.listen(8080)
 
