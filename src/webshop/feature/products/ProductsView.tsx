@@ -3,7 +3,7 @@ import { ProductGrid } from 'ui/containers/ProductGrid'
 import { useGetProductsQuery } from './products.query'
 import { Product } from './products.type'
 
-export const Products = () => {
+export const ProductsView = () => {
   const { data } = useGetProductsQuery()
 
   if (!data?.products) return null

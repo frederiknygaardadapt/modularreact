@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { Home, About, Login } from './Pages'
 import { Header, Topbar } from 'ui'
 
-import { Products, ProductView } from 'webshop/feature/products'
+import { ProductsView, ProductView } from 'webshop/feature/products'
 import { useIsAuthenticated, logout } from 'webshop/feature/auth'
 
 import zalandoLogo from 'ui/assets/logo_default.svg'
@@ -32,7 +32,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="about" element={<About />} />
-        <Route path="products" element={<Products />} />
+        <Route path="products" element={<ProductsView />} />
         <Route path="products/:productSlug" element={<ProductView />} />
       </Routes>
     </div>

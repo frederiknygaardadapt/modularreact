@@ -1,2 +1,2 @@
-export * from './Products'
+export * from './ProductsView'
 export * from './ProductView'
