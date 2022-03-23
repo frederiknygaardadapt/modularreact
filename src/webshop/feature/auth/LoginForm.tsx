@@ -2,7 +2,7 @@ import { FormEvent, useRef } from 'react'
 import { useLoginMutation } from './auth.query'
 
 export const LoginForm = () => {
-  const [login, data] = useLoginMutation()
+  const [login, { data, error, isLoading }] = useLoginMutation()
 
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
@@ -17,12 +17,20 @@ export const LoginForm = () => {
 
     login({ email, password })
   }
+
+  console.log(error)
+
+  if (error && 'message' in error) {
+    console.log(error.message)
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="email">Email</label>
-      <input ref={emailRef} id="email" name="email" type="email" placeholder="Email" />
+      <input required ref={emailRef} id="email" name="email" type="email" placeholder="Email" />
       <label htmlFor="password">Password</label>
       <input
+        required
         ref={passwordRef}
         id="password"
         name="password"

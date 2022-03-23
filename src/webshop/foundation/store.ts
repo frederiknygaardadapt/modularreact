@@ -11,6 +11,8 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(authApi.middleware, usersApi.middleware, productsApi.middleware),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
