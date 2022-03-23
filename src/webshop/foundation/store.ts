@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from 'webshop/feature/counter/counter.slice'
+import authReducer from 'webshop/feature/auth/auth.slice'
 import { usersApi } from 'webshop/feature/users/users.query'
 import { authApi } from 'webshop/feature/auth/auth.query'
 import { productsApi } from 'webshop/feature/products/products.query'
@@ -7,6 +8,7 @@ import { productsApi } from 'webshop/feature/products/products.query'
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    auth: authReducer,
     [usersApi.reducerPath]: usersApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     [productsApi.reducerPath]: productsApi.reducer,

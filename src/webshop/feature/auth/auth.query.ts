@@ -12,7 +12,6 @@ export const authApi = createApi({
         method: 'POST',
         body: login,
       }),
-      transformResponse: (response: { data: any }) => response.data,
     }),
   }),
 })

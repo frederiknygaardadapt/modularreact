@@ -19,7 +19,7 @@ export const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="container">
       <label htmlFor="email">Email</label>
       <input required ref={emailRef} id="email" name="email" type="email" placeholder="Email" />
       <label htmlFor="password">Password</label>
