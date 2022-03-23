@@ -1,13 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./Home";
 import { About } from "./About";
+import { Header } from "ui/components/Header/Header";
+import { Topbar } from "ui/components/Topbar/Topbar";
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="about" element={<About />} />
-    </Routes>
+    <div>
+      <Topbar />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+      </Routes>
+    </div>
   );
 };
 
