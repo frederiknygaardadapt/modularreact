@@ -1,14 +1,7 @@
-import { InputHTMLAttributes } from 'react'
+import { forwardRef, InputHTMLAttributes } from 'react'
 
-type Props = {
-  labelText: string
-} & InputHTMLAttributes<HTMLInputElement>
+type Props = InputHTMLAttributes<HTMLInputElement>
 
-export const Input = ({ labelText, ...rest }: Props) => {
-  return (
-    <div>
-      <label>{labelText}</label>
-      <input {...rest} />
-    </div>
-  )
-}
+export const Input = forwardRef<HTMLInputElement, Props>((props, ref) => (
+  <input className="max-w-md" {...props} ref={ref} />
+))

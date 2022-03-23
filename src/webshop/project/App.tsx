@@ -7,8 +7,14 @@ import { Login } from './Login'
 import { Products } from 'webshop/feature/products/Products'
 import { ProductView } from 'webshop/feature/products/ProductView'
 import zalandoLogo from 'ui/assets/logo_default.svg'
+import { useIsAuthenticated } from 'webshop/feature/auth/auth.slice'
+import { useDispatch } from 'react-redux'
+import { logout } from 'webshop/feature/auth/auth.slice'
 
 const App = () => {
+  const isAuthenticated = useIsAuthenticated()
+  const dispatch = useDispatch()
+
   return (
     <div>
       <Topbar />
@@ -16,7 +22,11 @@ const App = () => {
         <Header.Menu>
           <Header.Logo url={zalandoLogo} />
           <Header.Login>
-            <Link to="/login">Login</Link>
+            {isAuthenticated ? (
+              <button onClick={() => dispatch(logout())}>Logout</button>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
           </Header.Login>
         </Header.Menu>
       </Header>

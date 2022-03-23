@@ -1,11 +1,19 @@
 import { FormEvent, useRef } from 'react'
 import { useLoginMutation } from './auth.query'
 
+import { Form } from 'ui/containers/Form/Form'
+import { FormField } from 'ui/components/FormField/FormField'
+import { Label } from 'ui/components/Label/Label'
+import { Input } from 'ui/components/Input/Input'
+import { Button } from 'ui/components/Button/Button'
+
+import { Navigate } from 'react-router-dom'
+
 export const LoginForm = () => {
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
 
-  const [login, { data, error, isLoading }] = useLoginMutation()
+  const [login, { error, isSuccess }] = useLoginMutation()
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -19,21 +27,35 @@ export const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="container">
-      <label htmlFor="email">Email</label>
-      <input required ref={emailRef} id="email" name="email" type="email" placeholder="Email" />
-      <label htmlFor="password">Password</label>
-      <input
-        required
-        ref={passwordRef}
-        id="password"
-        name="password"
-        type="password"
-        placeholder="Password"
-      />
-      <button>Login</button>
+    <Form onSubmit={handleSubmit}>
+      <div>
+        <FormField>
+          <Label htmlFor="email">Email</Label>
+          <Input
+            required={true}
+            ref={emailRef}
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+          />
+        </FormField>
+        <FormField>
+          <Label htmlFor="password">Password</Label>
+          <Input
+            required
+            ref={passwordRef}
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
+          />
+        </FormField>
+      </div>
+      <Button>Login</Button>
       {/* @ts-ignore */}
       {error && <p className="text-red-700">{error.data.message}</p>}
-    </form>
+      {isSuccess && <Navigate replace to="/" />}
+    </Form>
   )
 }
