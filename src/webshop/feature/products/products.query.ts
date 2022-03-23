@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { baseServerQuery } from 'webshop/foundation/adapters/server'
-import type { Product } from './products.type'
+import { Product } from './products.type'
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',

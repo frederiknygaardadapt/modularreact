@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useGetProductBySlugQuery } from './products.query'
 import { Container } from 'ui/containers/Container/Container'
+import { SingleProductView } from 'ui/components/SingleProductView/SingleProductView'
 
 export const ProductView = () => {
   const { productSlug } = useParams()
@@ -10,30 +11,11 @@ export const ProductView = () => {
 
   if (!data?.product) return null
 
-  const { brand, category, name, image, sizes, price } = data.product
+  const { id, brand, category, name, image, sizes, price } = data.product
 
   return (
     <Container containerSize="lg">
-      <>
-        <div>
-          <img className="w-full" alt={name} src={image} />
-        </div>
-        <div>
-          <div>{brand}</div>
-          <h1 className="text-3xl">
-            {name} - {category}
-          </h1>
-          <div>{price}</div>
-
-          <select>
-            {sizes?.map((size) => (
-              <option key={size.value} value={size.value}>
-                {size.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </>
+        <SingleProductView id={id} brand={brand} category={category} name={name} image={image} sizes={sizes} price={price}/>
     </Container>
   )
 }

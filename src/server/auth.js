@@ -1,7 +1,8 @@
 const { faker } = require('@faker-js/faker')
 
 const login = (req, res) => {
-  const { email, password } = req.body ?? {}
+  const email = req.body.email
+  const password = req.body.password
 
   if (!email) return res.status(401).send({ message: 'Missing email ' })
   if (!password) return res.status(401).send({ message: 'Missing password' })

@@ -1,4 +1,3 @@
-import { Counter } from "webshop/feature/counter/Counter";
 import { Button } from "ui/components/Button/Button";
 import { Users } from "webshop/feature/users/Users";
 
@@ -12,7 +11,6 @@ export const Home = () => {
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
           <Button label="hej"></Button>
-          <Counter />
           <Users />
         </header>
       </div>
