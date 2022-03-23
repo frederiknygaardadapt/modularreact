@@ -1,5 +1,5 @@
 import { Counter } from "webshop/feature/counter/Counter";
-import { Button } from "components/Button/Button";
+import { Button } from "ui/components/Button/Button";
 import { Users } from "webshop/feature/users/Users";
 
 export const Home = () => {
