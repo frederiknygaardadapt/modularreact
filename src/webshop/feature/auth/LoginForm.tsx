@@ -2,12 +2,12 @@ import { FormEvent, useRef } from 'react'
 import { useLoginMutation } from './auth.query'
 
 export const LoginForm = () => {
-  const [login, { data, error, isLoading }] = useLoginMutation()
-
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [login, { data, error, isLoading }] = useLoginMutation()
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     const email = emailRef.current?.value
@@ -16,12 +16,6 @@ export const LoginForm = () => {
     if (!email || !password) return
 
     login({ email, password })
-  }
-
-  console.log(error)
-
-  if (error && 'message' in error) {
-    console.log(error.message)
   }
 
   return (
@@ -38,6 +32,8 @@ export const LoginForm = () => {
         placeholder="Password"
       />
       <button>Login</button>
+      {/* @ts-ignore */}
+      {error && <p className="text-red-700">{error.data.message}</p>}
     </form>
   )
 }
