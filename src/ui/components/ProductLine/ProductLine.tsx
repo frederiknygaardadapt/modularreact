@@ -1,16 +1,19 @@
+import { Link } from "react-router-dom"
+
 type Props = {
   id: string
   name: string
   quantity: number
   image: string
+  slug: string
 }
 
-export const ProductLine = ({ id, name, quantity, image }: Props) => {
+export const ProductLine = ({ id, name, quantity, image, slug }: Props) => {
   return (
     <div className="grid grid-flow-col">
-      <div>
+      <Link to={`/products/${slug}`}>
         <img className="w-32" alt={name} src={image} />
-      </div>
+      </Link>
       <div>{name}</div>
       <div>{quantity}</div>
     </div>

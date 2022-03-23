@@ -1,16 +1,16 @@
 import { ReactNode } from 'react'
 import { ProductLine } from 'ui/components/ProductLine'
-import { useBasket } from 'webshop/feature/basket/basket.slice'
 
 type BasketLineProps = {
     id: string
     quantity: number
     name: string
     image: string
+    slug: string
 }
 
-const BasketLine = ({quantity, id, name, image}: BasketLineProps) => {
-  return <ProductLine image={image} id={id} name={name} quantity={quantity} />
+const BasketLine = ({slug, quantity, id, name, image}: BasketLineProps) => {
+  return <ProductLine slug={slug} image={image} id={id} name={name} quantity={quantity} />
 }
 
 type Props = {
