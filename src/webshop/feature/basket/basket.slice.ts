@@ -34,12 +34,16 @@ export const basketSlice = createSlice({
 export const { addToBasket } = basketSlice.actions
 
 export const useTotalAmountOfItemsInBasket = () => {
-  const useBasketProducts = useSelector((state: RootState) => state.basket.products)
-  return useBasketProducts.length
+  let total = 0
+  const basketProducts = useSelector((state: RootState) => state.basket.products)
+
+  basketProducts.forEach((item) => {
+    total += item.quantity
+  })
+
+  return total
 }
 
 export const useBasket = () => useSelector((state: RootState) => state.basket)
-
-
 
 export default basketSlice.reducer
