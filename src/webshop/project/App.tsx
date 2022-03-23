@@ -1,15 +1,17 @@
 import { Routes, Route, Link } from 'react-router-dom'
-import { Basket } from './Basket'
+import { Basket } from './Pages/Basket'
 import { useDispatch } from 'react-redux'
 
 import { Home, About, Login, Products, Product } from './Pages'
 import { Header, Topbar, Grid } from 'ui'
 
 import { useIsAuthenticated, logout } from 'webshop/feature/auth'
+import { useTotalAmountOfItemsInBasket } from 'webshop/feature/basket'
 
 import zalandoLogo from 'ui/assets/logo_default.svg'
 
 const App = () => {
+  const basketQuantity = useTotalAmountOfItemsInBasket()
   const isAuthenticated = useIsAuthenticated()
   const dispatch = useDispatch()
 
@@ -34,7 +36,7 @@ const App = () => {
                 <Link to="/login">Login</Link>
               )}
             </Header.Login>
-            <Header.Basket />
+            <Link to="/basket">Kurv({basketQuantity})</Link>
           </Grid>
         </Header.Menu>
       </Header>

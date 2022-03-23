@@ -1,25 +1,29 @@
-import { useDispatch } from "react-redux"
-import { AddToBasket } from "webshop/feature/basket/AddToBasket"
-
 type Props = {
-    id: string
-    brand: string
-    name: string
-    price: number
-    image: string
-    category: string
-    sizes: size[]
+  id: string
+  brand: string
+  name: string
+  price: number
+  image: string
+  category: string
+  sizes: size[]
+  onAddToCart: () => void
 }
 
 type size = {
-    value: number
-    label: string
+  value: number
+  label: string
 }
 
-export const SingleProductView = ({ id, brand, price, category, name, image, sizes }: Props) => {
-
-    const dispatch = useDispatch()
-
+export const SingleProductView = ({
+  id,
+  brand,
+  price,
+  category,
+  name,
+  image,
+  sizes,
+  onAddToCart,
+}: Props) => {
   return (
     <>
       <div>
@@ -39,7 +43,7 @@ export const SingleProductView = ({ id, brand, price, category, name, image, siz
             </option>
           ))}
         </select>
-        <AddToBasket productId={id} />
+        <button onClick={onAddToCart}>Tilføj til kurv</button>
       </div>
     </>
   )

@@ -1,9 +1,10 @@
 import { ProductView } from 'webshop/feature/products'
+import { addToBasket } from 'webshop/feature/basket'
 
 export const Product = () => {
   return (
     <div>
-      <ProductView />
+      <ProductView addToBasket={addToBasket} />
     </div>
   )
 }

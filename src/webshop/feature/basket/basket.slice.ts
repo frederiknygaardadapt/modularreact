@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { useSelector } from 'react-redux'
 import { RootState } from 'webshop/foundation/store'
 import { BasketState } from './basket.type'
@@ -11,7 +11,7 @@ export const basketSlice = createSlice({
   name: 'basket',
   initialState,
   reducers: {
-    addToBasket: (state, action) => {
+    addToBasket: (state, action: PayloadAction<{ id: string; quantity?: number }>) => {
       let productAlreadyExistInBasket = false
       state.products.forEach((item, key) => {
         if (item.id === action.payload.id) {

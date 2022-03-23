@@ -1,7 +1,7 @@
 import { Container } from 'ui/containers/Container'
-import { useBasket } from 'webshop/feature/basket/basket.slice'
-import { BasketView } from 'webshop/feature/basket/BasketView'
-import { useGetProductByIdQuery } from 'webshop/feature/products/products.query'
+
+import { useBasket, BasketView } from 'webshop/feature/basket'
+import { useGetProductByIdQuery } from 'webshop/feature/products'
 
 type Props = {
   id: string
@@ -17,7 +17,7 @@ const BasketItem = ({ id, quantity }: Props) => {
 export const Basket = () => {
   const basket = useBasket()
   return (
-    <Container spacing='md'>
+    <Container spacing="md">
       <BasketView>
         {basket.products.map(({ id, quantity }) => (
           <BasketItem key={id} id={id} quantity={quantity} />
