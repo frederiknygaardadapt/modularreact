@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "webshop/feature/counter/counter.slice";
 import { usersApi } from "webshop/feature/users/users.query";
+import { productsApi } from "webshop/feature/products/products.query";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     [usersApi.reducerPath]: usersApi.reducer,
+    [productsApi.reducerPath]: productsApi.reducer,
   },
 });
 
