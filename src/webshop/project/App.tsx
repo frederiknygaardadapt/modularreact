@@ -1,10 +1,10 @@
 import { Routes, Route, Link } from 'react-router-dom'
+import { Basket } from './Basket'
 import { useDispatch } from 'react-redux'
 
-import { Home, About, Login } from './Pages'
-import { Header, Topbar } from 'ui'
+import { Home, About, Login, Products, Product } from './Pages'
+import { Header, Topbar, Grid } from 'ui'
 
-import { ProductsView, ProductView } from 'webshop/feature/products'
 import { useIsAuthenticated, logout } from 'webshop/feature/auth'
 
 import zalandoLogo from 'ui/assets/logo_default.svg'
@@ -18,22 +18,33 @@ const App = () => {
       <Topbar />
       <Header>
         <Header.Menu>
-          <Header.Logo url={zalandoLogo} />
-          <Header.Login>
-            {isAuthenticated ? (
-              <button onClick={() => dispatch(logout())}>Logout</button>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
-          </Header.Login>
+          <Header.Navigation>
+            <Link to="/products">Damer</Link>
+            <Link to="/products">Herre</Link>
+            <Link to="/products">Børn</Link>
+          </Header.Navigation>
+          <Link to="/">
+            <Header.Logo url={zalandoLogo} />
+          </Link>
+          <Grid>
+            <Header.Login>
+              {isAuthenticated ? (
+                <button onClick={() => dispatch(logout())}>Logout</button>
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
+            </Header.Login>
+            <Header.Basket />
+          </Grid>
         </Header.Menu>
       </Header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="about" element={<About />} />
-        <Route path="products" element={<ProductsView />} />
-        <Route path="products/:productSlug" element={<ProductView />} />
+        <Route path="basket" element={<Basket />} />
+        <Route path="products" element={<Products />} />
+        <Route path="products/:productSlug" element={<Product />} />
       </Routes>
     </div>
   )

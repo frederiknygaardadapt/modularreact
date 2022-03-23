@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux"
 import { AddToBasket } from "webshop/feature/basket/AddToBasket"
-import { addToBasket } from "webshop/feature/basket/basket.slice"
 
 type Props = {
     id: string

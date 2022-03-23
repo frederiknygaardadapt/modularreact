@@ -14,7 +14,7 @@ export const ProductView = () => {
   const { id, brand, category, name, image, sizes, price } = data.product
 
   return (
-    <Container containerSize="lg">
+    <Container containerSize="lg" spacing='md'>
         <SingleProductView id={id} brand={brand} category={category} name={name} image={image} sizes={sizes} price={price}/>
     </Container>
   )
