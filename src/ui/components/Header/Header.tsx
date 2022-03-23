@@ -1,8 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { useTotalAmountOfItemsInBasket } from 'webshop/feature/basket/basket.slice'
 import zalandoLogo from '../../assets/logo_default.svg'
 
 type Props = {
   children: React.ReactNode
+}
+
+const HeaderBasket = () => {
+  const basketQuantity = useTotalAmountOfItemsInBasket()
+
+  return <Link to="/basket">Kurv({basketQuantity})</Link>
 }
 
 const HeaderLogin = ({ children }: { children: React.ReactNode }) => {
@@ -21,7 +29,7 @@ const HeaderMenu = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex justify-between py-4">
       <div className="flex space-x-2">
-        <a href="#">Damer</a>
+        <Link to="/products">Damer</Link>
         <a href="#">Herre</a>
         <a href="#">Børn</a>
       </div>
@@ -50,6 +58,7 @@ const Header = ({ children }: Props) => {
   )
 }
 
+Header.Basket = HeaderBasket
 Header.Menu = HeaderMenu
 Header.Logo = HeaderLogo
 Header.Login = HeaderLogin

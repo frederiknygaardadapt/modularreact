@@ -34,19 +34,19 @@ const createProduct = (index) => {
     image: `${faker.image.fashion()}?${index}`,
     category: faker.random.arrayElement(categories),
     sizes: [
-        {
-            value: 0,
-            label: 'Small'
-        },
-        {
-            value: 1,
-            label: 'Medium'
-        },
-        {
-            value: 2,
-            label: 'Large'
-        }
-    ]
+      {
+        value: 0,
+        label: 'Small',
+      },
+      {
+        value: 1,
+        label: 'Medium',
+      },
+      {
+        value: 2,
+        label: 'Large',
+      },
+    ],
   }
 }
 
@@ -60,15 +60,23 @@ app.get('/api/products', (req, res) => {
   res.status(200).send({ products })
 })
 
-app.get('/api/products/:slug', (req, res) => {
+app.get('/api/product/slug/:slug', (req, res) => {
   const product = products.find(
     (product) => product.slug.toLowerCase() === req.params.slug.toLowerCase()
   )
-  console.log(product)
+
+  if (product) res.send({ product })
+  if (!product) res.status(404).send({ message: 'Product not found' })
+})
+
+app.get('/api/product/id/:id', (req, res) => {
+    const product = products.find(
+      (product) => product.id.toLowerCase() === req.params.id.toLowerCase()
+    )
 
     if (product) res.send({ product })
     if (!product) res.status(404).send({ message: 'Product not found' })
-})
+  })
 
 /** User */
 app.get('/users', user.getUsers)
