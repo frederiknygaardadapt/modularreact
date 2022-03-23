@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const { faker } = require("@faker-js/faker");
 
 const user = require("./users");
+const auth = require("./auth");
 
 const app = express();
 
@@ -37,6 +38,8 @@ app.get("/products", (req, res) => {
 /** User */
 app.get("/users", user.getUsers);
 app.post("/users", user.addUser);
+
+app.post("/api/login", auth.login);
 
 app.listen(8080);
 
