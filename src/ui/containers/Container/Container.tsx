@@ -1,7 +1,19 @@
-type Props = {
-  children: React.ReactElement;
-};
+import clsx from 'clsx'
 
-export const Container = ({ children }: Props) => {
-  <div className="container m-auto">{children}</div>;
-};
+type Props = {
+  children: React.ReactElement
+
+  containerSize?: 'sm' | 'md' | 'lg'
+}
+
+export const Container = ({ children, containerSize = 'sm' }: Props) => (
+  <div
+    className={clsx(
+      'container',
+      { 'grid grid-cols-3 gap-6': containerSize === 'md' },
+      { 'grid grid-cols-2 gap-20': containerSize === 'lg' }
+    )}
+  >
+    {children}
+  </div>
+)

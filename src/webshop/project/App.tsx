@@ -10,6 +10,7 @@ import { ProductView } from 'webshop/feature/products/ProductView'
 const App = () => {
   return (
     <div>
+      <h1>Hej</h1>
       <Topbar />
       <Header />
       <Routes>
