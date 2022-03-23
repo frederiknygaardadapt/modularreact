@@ -57,7 +57,7 @@ const products = [...new Array(30)].map((_, index) => {
 
 /** Products */
 app.get('/api/products', (req, res) => {
-  res.send({ products })
+  res.status(200).send({ products })
 })
 
 app.get('/api/products/:slug', (req, res) => {
@@ -65,7 +65,9 @@ app.get('/api/products/:slug', (req, res) => {
     (product) => product.slug.toLowerCase() === req.params.slug.toLowerCase()
   )
   console.log(product)
-  res.send({ product })
+
+    if (product) res.send({ product })
+    if (!product) res.status(404).send({ message: 'Product not found' })
 })
 
 /** User */
